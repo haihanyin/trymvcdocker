@@ -13,7 +13,7 @@ import p.hh.trymvcdocker.backend.service.BookService;
 import java.util.List;
 
 
-@RestController("/book")
+@RestController
 public class BookController {
 
     private BookService bookService;
@@ -23,17 +23,17 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/book/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Book getBook(@PathVariable long id) {
         return bookService.getBook(id);
     }
 
-    @GetMapping(value = "/list")
+    @GetMapping(value = "/book/list", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<Book> listBooks() {
         return bookService.listBooks();
     }
 
-    @PostMapping(value = "/add")
+    @PostMapping(value = "/book/add", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Book addBook(@RequestParam String name) {
         return bookService.addBook(name);
     }
